@@ -23,9 +23,15 @@ namespace Task7
         public MainWindow()
         {
             InitializeComponent();
-            tblFio.Text = tblFio.Text + "Иван Иванович Иванов";
-            tblAge.Text = tblAge.Text + "06.05.04";
-            tblDuty.Text = tblDuty.Text + "Раб";
+            //Собирает ФИО из полей 0-вого работника, класс worker, workers - название списка рабочих в classhelper'e.
+            tblFio.Text = tblFio.Text + ClassHelper.workers[0].Name + " " + ClassHelper.workers[0].Surename + " " + ClassHelper.workers[0].Patron;
+            //Вывод даты
+            tblAge.Text = tblAge.Text + ClassHelper.workers[0].DateOfBirth.ToShortDateString(); //Последняя ф-я убирает время из даты
+            //Вывод должности
+            tblDuty.Text = tblDuty.Text + ClassHelper.workers[0].Duty;
+            //Вывод картинки
+            BitmapImage image = new BitmapImage(ClassHelper.workers[0].PhotoPath); //Создаётся имадж по юри ссылке из поля класса
+            imgPhoto.Source = image;
         }
     }
 }

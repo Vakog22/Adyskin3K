@@ -13,7 +13,7 @@
                    Height="100" 
                    Width="100"
                    Margin="10"
-                   HorizontalAlignment="Left" Source="/Photo.jpg"/>
+                   HorizontalAlignment="Left"/>
                 <StackPanel>
                     <TextBlock x:Name="tblFio"
                                FontSize="20"
