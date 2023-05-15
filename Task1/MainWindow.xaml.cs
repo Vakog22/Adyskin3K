@@ -49,7 +49,7 @@ namespace Task1
                 }
                 if (String.IsNullOrEmpty(tbPhone.Text))
                 {
-                    MessageBox.Show("Поле отчество Пустое");
+                    MessageBox.Show("Поле телефон Пустое");
                     return;
                 }
                 if (String.IsNullOrEmpty(dpDate.Text))
@@ -77,6 +77,13 @@ namespace Task1
                 if (!tbPhone.Text.All(Char.IsDigit)) //Запрос LINQ, является ли текст цифрами (Внимание на восклицательный знак)
                 {
                     MessageBox.Show("Поле имя содержит недопустимые символы");
+                    return;
+                }
+
+                //Проверки на длинну
+                if (tbPhone.Text.Length != 11)
+                {
+                    MessageBox.Show("Телефон неверный");
                     return;
                 }
 

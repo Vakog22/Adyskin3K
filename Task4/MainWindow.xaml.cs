@@ -25,6 +25,8 @@ namespace Task4
             InitializeComponent();
             cmbGender.ItemsSource = new List<string>() { "М", "Ж" }; //Создание списка полов
             cmbGender.SelectedIndex = 0;
+            cmbHospital.ItemsSource = new List<string>() { "Клиника им. Менгельса", "Скотобойня"}; //Список БОЛЬниц
+            cmbHospital.SelectedIndex = 0;
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
@@ -44,12 +46,29 @@ namespace Task4
                 }
                 if (String.IsNullOrEmpty(tbPhone.Text))
                 {
-                    MessageBox.Show("Поле отчество Пустое");
+                    MessageBox.Show("Поле телефон Пустое");
                     return;
                 }
                 if (String.IsNullOrEmpty(dpDate.Text))
                 {
                     MessageBox.Show("Поле дата рождения Пустое");
+                    return;
+                }
+                if (String.IsNullOrEmpty(tbSocial.Text))
+                {
+                    MessageBox.Show("Поле полис пустое");
+                    return;
+                }
+
+                //Проверки на длинну
+                if (tbSocial.Text.Length != 6)//У полиса много цифр, но мне лень каждый раз их вводить
+                {
+                    MessageBox.Show("Полис неверный");
+                    return;
+                }
+                if (tbPhone.Text.Length != 11)
+                {
+                    MessageBox.Show("Телефон неверный");
                     return;
                 }
 
@@ -66,7 +85,12 @@ namespace Task4
                 }
                 if (!tbPhone.Text.All(Char.IsDigit)) //Запрос LINQ, является ли текст цифрами (Внимание на восклицательный знак)
                 {
-                    MessageBox.Show("Поле имя содержит недопустимые символы");
+                    MessageBox.Show("Поле телефон содержит недопустимые символы");
+                    return;
+                }
+                if (!tbSocial.Text.All(Char.IsDigit)) //Запрос LINQ, является ли текст цифрами (Внимание на восклицательный знак)
+                {
+                    MessageBox.Show("Поле полис содержит недопустимые символы");
                     return;
                 }
 
@@ -78,7 +102,7 @@ namespace Task4
                     MessageBox.Show("Некорректная дата");
                     return;
                 }
-                MessageBox.Show("Пользоваьтель добавлен"); //Имитация добавления
+                MessageBox.Show("Клиент добавлен"); //Имитация добавления
             }
             catch (Exception ex)
             {
